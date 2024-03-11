@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      
+    layout:decorate="~{layout/defaultLayout}"
+>
+<head th:remove="all">
+    <title>Sample MAIN</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        Sample MAIN
+        <li><a href="/sample/simMetrics">simMetrics</a></li>
+    </div>
+</body>
+<script layout:fragment="contentJs" th:inline="javascript">
+    /* <![CDATA[ */
+    $(document).ready(function () {
+        // $("#menu").kendoMenu();
+    });
+	/* ]]> */
+</script>
+</html>

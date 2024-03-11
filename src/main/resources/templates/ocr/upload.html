@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      
+    layout:decorate="~{layout/defaultLayout}"
+>
+<head th:remove="all">
+    <title>OCR CHOBON UPLOAD</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <form action="/ocr/upload" method="post" enctype="multipart/form-data">
+            <fieldset>
+               <legend>파일 업로드</legend>
+               <p>
+                    <select name="fileType">
+                        <option value="juminChobon" selected>초본</option>
+                        <option value="juminDeungbon">등본</option>
+                        <option value="hiealc">건강보험 자격득실확인서</option>
+                        <option value="toeicStare">토익응시확인서</option>
+                        <option value="toeicScore">토익점수인증서</option>
+                        <option value="toeicRecord">토익성적확인서</option>
+                        <option value="toeicReceipt">토익접수증</option>
+                        <option value="transactionReceipt">거래영수증</option>
+                        <option value="bankbookDetails">통장거래내역</option>
+                        <!-- <option value="cardReceipt" selected>카드영수증</option> -->
+                        <option value="template">템플릿</option>
+                    </select>
+                </p>
+               <p><input type="file" name="file" accept="image/*;.pdf"></p>
+               <p><input type="submit" value="전송"></p>	 	
+            </fieldset>
+        </form>
+    </div>
+</body>
+<script layout:fragment="contentJs" th:inline="javascript">
+    /* <![CDATA[ */
+    $(document).ready(function () {
+    });
+	/* ]]> */
+</script>
+</html>

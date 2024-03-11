@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/defaultLayout}"
+>
+<head th:remove="all">
+    <title>OCR 초본 JSON PARSE</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>초본 JSON PARSE LIST</h1>
+        <table>
+          <tr>
+            <th>목록</th>
+            <th>내용</th>
+          </tr>
+          <tr>
+            <td>초본 발급일</td>
+            <td th:text="${ocrData.issueDt}"></td>
+          </tr>
+          <tr>
+            <td>성명</td>
+            <td th:text="${ocrData.issueNm}"></td>
+          </tr>
+          <tr>
+            <td>주민번호</td>
+            <td th:text="${ocrData.juminRegNo}"></td>
+          </tr>
+          <tr>
+            <td>생년월일</td>
+            <td th:text="${ocrData.birth}"></td>
+          </tr>
+          <tr th:if="${ocrData.currentAddr} != null">
+            <td>현거주 주소</td>
+            <td th:text="${ocrData.currentAddr}"></td>
+          </tr>
+          <tr>
+            <td>경기도 최초 거주일</td>
+            <td th:text="${ocrData.residStartDt}"></td>
+          </tr>
+          <tr>
+            <td>경기도 연속 거주 시작일</td>
+            <td th:text="${ocrData.residConStartDt}"></td>
+          </tr>
+          <tr>
+            <td>경기도 마지막 거주 이전일</td>
+            <td th:text="${ocrData.residEndDt}"></td>
+          </tr>
+          <tr>
+            <td>경기도 연속 거주일수</td>
+            <td th:text="${ocrData.conResidenceDay}"></td>
+          </tr>
+          <tr>
+            <td>경기도 연속 거주기간</td>
+            <td th:text="${ocrData.conResidenceYmd}"></td>
+          </tr>
+          <tr>
+            <td>경기도 합산 거주일수</td>
+            <td th:text="${ocrData.residenceDay}"></td>
+          </tr>
+          <tr>
+            <td>경기도 합산 거주기간</td>
+            <td th:text="${ocrData.residenceYmd}"></td>
+          </tr>
+          <tr>
+            <td colspan="2">경기도 거주 주소</td>
+          </tr>
+          <tr th:if=" ${ocrData.ggAddrList}" th:each="js, idx : ${ocrData.ggAddrList}">
+            <td th:text="'주소 ' + ${idx.count}"></td>
+            <td th:text="${js}"></td>
+          </tr>
+          <tr>
+            <td colspan="2">전체주소</td>
+          </tr>
+          <tr th:if=" ${ocrData.addrList}" th:each="js, idx : ${ocrData.addrList}">
+            <td th:text="'주소 ' + ${idx.count}"></td>
+            <td th:text=" ${js.addrDate} + ' ' + ${js.addr}"></td>
+          </tr> 
+        </table>
+    </div>
+</body>
+<script layout:fragment="contentJs" th:inline="javascript">
+    /* <![CDATA[ */
+    $(document).ready(function () {
+    });
+	/* ]]> */
+</script>
+</html>

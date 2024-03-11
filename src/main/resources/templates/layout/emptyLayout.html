@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:remove="all">
+    <title>EMPTY 레이아웃</title>
+</head>
+    <th:block th:replace="layout/top :: head"></th:block>
+    <body>
+        <div id="wrap">
+            <!-- contents -->
+            <section id="container">
+                <div layout:fragment="content"></div>
+            </section>
+            <!--// contents -->
+        </div>
+    </body>
+    <script layout:fragment="contentJs"></script>
+</html>

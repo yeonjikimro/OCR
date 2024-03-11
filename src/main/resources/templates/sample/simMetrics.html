@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      
+    layout:decorate="~{layout/defaultLayout}"
+>
+<head th:remove="all">
+    <title>Sample MAIN</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        simMetrics compare 샘플링 <br>
+        target1:<input type="text" id="targetStr1" name="targetStr1" size="50"/>
+        target2:<input type="text" id="targetStr2" name="targetStr2" size="50"/>
+        <button onclick="matchStr();">비교</button> <br>
+        <input type="text" id="resultStr" name="resultStr" size="50"/>
+
+    </div>
+</body>
+<script layout:fragment="contentJs" th:inline="javascript">
+    /* <![CDATA[ */
+    $(document).ready(function () {
+        // $("#menu").kendoMenu();
+    });
+    function matchStr(){
+        $.ajax({      
+            type:"GET",  
+            url:"/sample/sim/matchString",      
+            data:{
+                targetStr1 : $("#targetStr1").val()
+                , targetStr2 : $("#targetStr2").val()
+            },      
+            success:function(args){   
+                $("#resultStr").val(args);      
+            },   
+            error:function(e){  
+                alert(e.responseText);  
+            }  
+        }); 
+    }
+	/* ]]> */
+</script>
+</html>

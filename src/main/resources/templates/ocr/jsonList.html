@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/defaultLayout}"
+>
+<head th:remove="all">
+    <title>OCR JSON FILE LIST</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>OCR PARSING FILE LIST</h1>
+        <table>
+          <tr>
+            <th>순번</th>
+            <th>파일명</th>
+            <th>파일경로</th>
+          </tr>
+          <tr th:each="jl, idx : ${jsonList}">
+            <td th:text="${idx.count}"></td>
+            <td><a th:href="'/ocr/'+ ${fileType} +'/jsonRowData?fileName='+${jl.fileName}"><span th:text="${jl.fileName}"></span></a></td>
+            <td><a th:href="${'/ocr/jsonData?filePath='+ #uris.escapeQueryParam(jl.filePath)}"><span th:text="${jl.filePath}"></span></a></td>
+          </tr>
+        </table>
+    </div>
+</body>
+<script layout:fragment="contentJs" th:inline="javascript">
+    /* <![CDATA[ */
+    $(document).ready(function () {
+    });
+	/* ]]> */
+</script>
+</html>

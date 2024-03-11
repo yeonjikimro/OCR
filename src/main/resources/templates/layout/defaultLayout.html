@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:remove="all">
+    <title>기본 레이아웃</title>
+</head>
+<th:block th:replace="layout/top :: head"></th:block>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        <div th:replace="layout/header :: header"></div>
+        <!-- header -->
+        
+        <!-- contents -->
+        <section id="container">
+            <div id="contents" class="content_wide">
+                <!-- content 작성 공통 영역 -->
+                <th:block layout:fragment="content" />
+                <!-- content 작성 공통 영역 -->
+            </div>
+        </section>
+        <!--// contents -->
+
+        <!-- footer -->
+        <div th:replace="layout/footer :: footer"></div>
+        <!-- footer -->
+    </div>
+</body>
+<script layout:fragment="contentJs"></script>
+</html>

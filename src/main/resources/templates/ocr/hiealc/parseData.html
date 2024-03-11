@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/defaultLayout}"
+>
+<head th:remove="all">
+    <title>OCR 건강보험 자격득식 확인서 JSON PARSE</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>건강보험 자격득식 확인서 JSON PARSE LIST</h1>
+        <table>
+          <tr>
+            <th>목록</th>
+            <th>내용</th>
+          </tr>
+          <tr>
+            <td>발급일</td>
+            <td th:text="${ocrData.issueDt}"></td>
+          </tr>
+          <tr>
+            <td>성명</td>
+            <td th:text="${ocrData.issueNm}"></td>
+          </tr>
+          <tr>
+            <td>주민번호</td>
+            <td th:text="${ocrData.juminNo}"></td>
+          </tr>
+          <tr>
+            <td colspan="2">자격득실내역</td>
+          </tr>
+          <tr th:each="ea, idx : ${ocrData.ealcList}">
+            <td th:text="${idx.count}"></td>
+            <td th:text="${ea}"></td>
+          </tr>
+        </table>
+    </div>
+</body>
+<script layout:fragment="contentJs" th:inline="javascript">
+    /* <![CDATA[ */
+    $(document).ready(function () {
+    });
+	/* ]]> */
+</script>
+</html>

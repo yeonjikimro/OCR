@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      
+    layout:decorate="~{layout/defaultLayout}"
+>
+<head th:remove="all">
+    <title>OCR MAIN</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        OCR MAIN
+        <ul>
+            <li><a href="/ocr/upload">OCR 파일 업로드</a></li>
+            <li><a href="/ocr/jsonList?fileType=juminChobon">초본 JSON 파일 리스트</a></li>
+            <li><a href="/ocr/jsonList?fileType=juminDeungbon">등본 JSON 파일 리스트</a></li>
+            <li><a href="/ocr/jsonList?fileType=hiealc">건강보험 자격득실 확인서 JSON 파일 리스트</a></li>
+            <li><a href="/ocr/jsonList?fileType=toeicStare">토익응시확인서 JSON 파일 리스트</a></li>
+            <li><a href="/ocr/jsonList?fileType=toeicScore">토익점수인증서 JSON 파일 리스트</a></li>
+            <li><a href="/ocr/jsonList?fileType=toeicRecord">토익성적확인서 JSON 파일 리스트</a></li>
+            <li><a href="/ocr/jsonList?fileType=toeicReceipt">토익접수증 JSON 파일 리스트</a></li>
+            <li><a href="/ocr/jsonList?fileType=transactionReceipt">거래영수증 JSON 파일 리스트</a></li>
+            <li><a href="/ocr/jsonList?fileType=bankbookDetails">통장거래내역 JSON 파일 리스트</a></li>
+        </ul>
+    </div>
+</body>
+<script layout:fragment="contentJs" th:inline="javascript">
+    /* <![CDATA[ */
+    $(document).ready(function () {
+        // $("#menu").kendoMenu();
+    });
+	/* ]]> */
+</script>
+</html>
